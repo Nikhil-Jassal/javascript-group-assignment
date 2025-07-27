@@ -14,9 +14,7 @@
 
           <div class="contact-info mt-5">
             <div class="info-item">
-              <div class="icon-box bg-primary">
-                📍
-              </div>
+              <div class="icon-box bg-primary">📍</div>
               <div>
                 <h5>Location</h5>
                 <p class="mb-0">Toronto, Canada</p>
@@ -24,9 +22,7 @@
             </div>
 
             <div class="info-item">
-              <div class="icon-box bg-primary">
-                ✉️
-              </div>
+              <div class="icon-box bg-primary">✉️</div>
               <div>
                 <h5>Email</h5>
                 <p class="mb-0">hello@example.com</p>
@@ -34,9 +30,7 @@
             </div>
 
             <div class="info-item">
-              <div class="icon-box bg-primary">
-                📞
-              </div>
+              <div class="icon-box bg-primary">📞</div>
               <div>
                 <h5>Phone</h5>
                 <p class="mb-0">+1 (123) 456-7890</p>
@@ -175,6 +169,7 @@ function submitForm() {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1rem;
+  padding-top: 4rem;
 }
 
 .row {
@@ -183,15 +178,34 @@ function submitForm() {
   gap: 3rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  justify-content: center;
 }
 
-/* Columns */
 .left-column,
 .right-column {
   flex: 1 1 50%;
   display: flex;
   flex-direction: column;
+  max-width: 450px;
 }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .left-column,
+  .right-column {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .left-column {
+    margin-bottom: 2rem;
+  }
+}
+
 
 /* Section Padding */
 .py-5 {
