@@ -1,29 +1,46 @@
 <script setup>
 import { ref } from 'vue'
-import logo from './assets/OIP.jpeg'  // adjust path if needed
+import logo from './assets/OIP.jpeg'
 
 const color1 = ref('#845EC2')
 const color2 = ref('#D65DB1')
 
-const menuItems = ['Palettes', 'Gradient', 'Contact', 'Info']
-
 function generate() {
   document.body.style.background = `linear-gradient(to right, ${color1.value}, ${color2.value})`
 }
+
+// Menu items can be objects with path and label for router-link
+const menuItems = [
+  { label: 'Palettes', path: '/palettes' },
+  { label: 'Contact', path: '/contact' },
+  { label: 'Info', path: '/info' },
+]
 </script>
 
 <template>
   <div class="container">
     <img :src="logo" alt="Logo" class="top-left-logo" />
 
-    <!-- Menu options top right -->
+    <!-- Menu options top right with router-link -->
     <nav class="top-right-menu">
       <ul>
-        <li v-for="item in menuItems" :key="item">{{ item }}</li>
+        <li v-for="item in menuItems" :key="item.label">
+          <router-link 
+            :to="item.path" 
+            class="menu-link"
+            active-class="active-link"
+          >
+            {{ item.label }}
+          </router-link>
+        </li>
       </ul>
     </nav>
 
-    <div class="logo"></div>
+    <!-- Page content rendered here -->
+    <router-view />
+
+    <!-- The rest of your homepage content below if you want it always visible -->
+
     <h1>ColorSpace</h1>
     <p class="subtitle">
       Never waste Hours on finding the perfect Color Palette again!<br />
@@ -202,4 +219,27 @@ input[type='color'] {
 .top-right-menu li:hover {
   color: #845ec2;
 }
+.menu-link {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  background-color: #4b2a82;  /* dark purple */
+  color: #ddd;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.menu-link:hover {
+  background-color: #845ec2;  /* lighter purple */
+  color: white;
+}
+
+.active-link {
+  background-color: #d65db1; /* bright pink */
+  color: white;
+  font-weight: 700;
+}
+
 </style>
